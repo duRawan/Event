@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from .models import *
 from .forms import EventForm
 
@@ -21,3 +21,26 @@ def showEvent(request,id):
     }
     print(context)
     return render(request,"app1/ShowEvent.html",context)
+
+def editProcess(request,id):
+    context={
+       "Event":Event.objects.get(id=id)
+    }
+    return render(request,"app1/edit.html",context)
+
+
+def editEvent(request,id):
+    event=Event.objects.get(id=id)
+    event.name=request.POST["name"]
+    event.description=request.POST["desc"]
+    event.numberOfTickets=request.POST["number"]
+    event.save()
+    return redirect(f'/Event/{event.id}')
+    
+
+
+
+def deleteEvent(request,id):
+    event=Event.objects.get(id=id)
+    event.delete()
+    return redirect("/admindashboard")
