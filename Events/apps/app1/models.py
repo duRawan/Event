@@ -1,7 +1,5 @@
+from __future__ import unicode_literals
 from django.db import models
-
-
-
 
 class UserManager(models.Manager):
     def basic_validator(self, postData):
@@ -28,7 +26,7 @@ class User(models.Model):
     last_name= models.CharField(max_length=45)
     email = models.CharField(max_length=255)
     password=models.CharField(max_length=255)
-    events=models.ForeignKey(Event,related_name="users")
+    events=models.ForeignKey(Event,related_name="users",on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
