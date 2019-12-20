@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
+    <div id="Header">
+        <p>logo</p>
+        <a href="\loginPage">Log in</a>
+        <a href="\registerPage">Register</a>
+    </div>
     <h1>Hi there</h1>
+    <ul>{% for e in allEvents %}
+        <a href="\Event\{{e.id}}">{{e.name}}</a> 
+        {% endfor %}
+    </ul>
 </body>
 </html>

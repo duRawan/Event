@@ -17,3 +17,34 @@ class EventForm(forms.ModelForm):
                 'placeholder':"Enter number of tickets",
             })
         }
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email','password']
+        widget={
+            'first_name': forms.TextInput(attrs={
+                'placeholder':"Enter your first name",
+            }),
+            'last_name': forms.TextInput(attrs={
+                'placeholder':"Enter your last name",
+            }),
+            'email': forms.TextInput(attrs={
+                'placeholder':"Enter your email",
+            }),
+            'password': forms.TextInput(attrs={
+                'placeholder':"Enter your password",
+            })
+        }
+class UserLoginForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email','password']
+        widget={
+            'email': forms.TextInput(attrs={
+                'placeholder':"Enter your email",
+            }),
+            'password': forms.TextInput(attrs={
+                'placeholder':"Enter your password",
+            })
+        }
