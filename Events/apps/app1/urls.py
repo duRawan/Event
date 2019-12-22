@@ -11,5 +11,7 @@ path('delete/<int:id>', views.deleteEvent),
 path('login',views.login),
 path('register',views.register),
 path('loginPage',views.loginPage),
-path('registerPage',views.registerPage)
+path('registerPage',views.registerPage),
+#/////////////// for testing page
+path('Login',views.Login),
 ]

@@ -84,3 +84,7 @@ def login(request):
     else:
         return redirect("/loginPage")
 
+#//////////////////////For testing page
+
+def Login(request):
+    return render(request, "app1/Login.html")
