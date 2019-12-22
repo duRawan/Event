@@ -35,6 +35,7 @@ class UserForm(forms.ModelForm):
             }),
             'password': forms.TextInput(attrs={
                 'placeholder':"Enter your password",
+                'name':'password'
             })
         }
 class UserLoginForm(forms.ModelForm):
