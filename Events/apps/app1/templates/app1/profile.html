@@ -7,12 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hi Login</h1>
-    <p>{{request.session.message}}</p>
-    <form action="\login" method="POST">
-        {% csrf_token %}
-        {{User}}
-        <input type="submit" value="submit">
-    </form>
+    <h1>Hello profile</h1>
+    <p>{{user.first_name}} {{user.last_name}}</p>
+    <p>{{user.email}}</p>
+   <button> <a href="">Edit profile</a> </button>
+    <h1>My Events</h1>
+    {% for e in allEvent %}
+    <p>{{e.name}}</p>
+    {% endfor %}
+    
 </body>
 </html>

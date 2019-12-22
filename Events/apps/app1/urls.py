@@ -10,8 +10,11 @@ path('editEvent/<int:id>', views.editEvent),
 path('delete/<int:id>', views.deleteEvent),
 path('login',views.login),
 path('register',views.register),
+path('logout',views.logout),
 path('loginPage',views.loginPage),
 path('registerPage',views.registerPage),
 #/////////////// for testing page
 path('Login',views.Login),
+path('profile',views.profile),
+path('Book/<int:id>',views.bookEvent)
 ]
