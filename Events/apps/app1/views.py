@@ -6,7 +6,7 @@ def index(request):
     context={
        "allEvents":Event.objects.all()
     }
-    return render(request, "app1/index.html",context)
+    return render(request, "app1/index1.html",context)
 
 def AdminDash(request):
     form=EventForm(request.POST or None)
