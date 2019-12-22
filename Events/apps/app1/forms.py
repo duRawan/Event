@@ -19,6 +19,7 @@ class EventForm(forms.ModelForm):
         }
 
 class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email','password']
@@ -37,6 +38,7 @@ class UserForm(forms.ModelForm):
             })
         }
 class UserLoginForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = ['email','password']
@@ -44,7 +46,7 @@ class UserLoginForm(forms.ModelForm):
             'email': forms.TextInput(attrs={
                 'placeholder':"Enter your email",
             }),
-            'password': forms.TextInput(attrs={
-                'placeholder':"Enter your password",
+            'password': forms.PasswordInput(attrs={
+                'placeholder':"Enter your password"
             })
         }

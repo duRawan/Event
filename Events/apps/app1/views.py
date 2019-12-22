@@ -50,6 +50,7 @@ def registerPage(request):
     User=UserForm(request.POST or None)
     if User.is_valid():
         User.save()
+        return redirect("/")
     else:
         print("Errrrrrrrroooooorrrrrr")
     
@@ -60,7 +61,6 @@ def registerPage(request):
 
 def loginPage(request):
     user=UserLoginForm(request.POST or None)
-    
     context={
             "User":user ,
         }
@@ -68,13 +68,17 @@ def loginPage(request):
 
 def register(request):
     pass
-#Log in is Need To be refactored !! #decorator for ensuring that a user is loged in  !! 
+
+
+#Log in is Need To be refactored Email must be unique!! #decorator for ensuring that a user is loged in  !! 
 def login(request):
     # u=User.objects.filter(email=request.POST['email'],password=request.POST['password'])
-    us=get_object_or_404(User, email=request.POST['email'])#use object or 404
-    ps=get_object_or_404(User, password=request.POST['password'])
-    if us:
-        if ps:
+    password=request.POST['password']
+    user=get_object_or_404(User, email=request.POST['email'])
+    print(user.id)
+    #use object or 404 if there is tow users has the same password it return 2!!! How To Fix it !
+    if user:
+        if password==user.password:
             print("Exist")
             return redirect("/")
     else:
