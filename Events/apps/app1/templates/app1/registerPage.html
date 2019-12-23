@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Hi</h1>
-
+    <p>{{request.session.ErrorRegister}}</p>
+    <p>{{request.session.ErrorPassword}}</p>
     <form action="\registerPage" method="POST">
         {% csrf_token %}
         {{User}}

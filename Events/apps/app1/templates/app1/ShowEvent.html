@@ -5,19 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Event</title>
+    {%load static%}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'app1/css/open-iconic-bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'app1/css/animate.css' %}">
+   
+    <link rel="stylesheet" href="{% static 'app1/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app1/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'app1/css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'app1/css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'app1/css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'app1/css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'app1/css/jquery.timepicker.css'%}">
+
+    
+    <link rel="stylesheet" href="{% static 'app1/css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'app1/css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'app1/css/style.css'%}">
 </head>
 <body>
+    {% include 'app1/header.html'%}
     <h2>Hiii</h2>
     <p>{{Event.name}}</p>
     <p>{{Event.description}}</p>
     <p>{{Event.numberOfTickets}}</p>
+    <p>{{request.session.email}}</p>
+    {% if request.session.hasEvent %}
+    <button > Book now</button>
+    <p>You already booked this event</p>
+    {% else %}
     <button > <a href="\Book\{{Event.id}}"> Book now</a></button>
+    {% endif %}
+
     {% if request.session.logged %}
         {% if request.session.UID == 1 %}
     <button > <a href="\delete\{{Event.id}}"> delete</a></button>
     <button > <a href="\editProcess\{{Event.id}}"> Edit</a></button>  
         {% endif %}
     {% endif %}
-    
+    {% include 'app1/footer.html'%}
+    <script src="{% static 'app1/js/jquery.min.js'%}"></script>
+  <script src="{% static 'app1/js/jquery-migrate-3.0.1.min.js'%}"></script>
+  <script src="{% static 'app1/js/popper.min.js'%}"></script>
+  <script src="{% static 'app1/js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'app1/js/jquery.easing.1.3.js'%}"></script>
+  <script src="{% static 'app1/js/jquery.waypoints.min.js'%}"></script>
+  <script src="{% static 'app1/js/jquery.stellar.min.js'%}"></script>
+  <script src="{% static 'app1/js/owl.carousel.min.js'%}"></script>
+  <script src="{% static 'app1/js/jquery.magnific-popup.min.js'%}"></script>
+  <script src="{% static 'app1/js/aos.js'%}"></script>
+  <script src="{% static 'app1/js/jquery.animateNumber.min.js'%}"></script>
+  <script src="{% static 'app1/js/bootstrap-datepicker.js'%}"></script>
+  <script src="{% static 'app1/js/jquery.timepicker.min.js'%}"></script>
+  <script src="{% static 'app1/js/scrollax.min.js'%}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'app1/js/google-map.js'%}"></script>
+  <script src="{% static 'app1/js/main.js'%}"></script>
 </body>
 </html>

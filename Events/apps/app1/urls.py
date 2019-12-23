@@ -22,4 +22,8 @@ path('Contact',views.Contact),
 
 
 
+path('profile',views.profile),
+path('Book/<int:id>',views.bookEvent),
+path('editProfProcess/<int:id>',views.editProfProcess),
+path('editProfile/<int:id>',views.editProfile),
 ]
