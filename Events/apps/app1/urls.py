@@ -14,7 +14,7 @@ path('logout',views.logout),
 path('loginPage',views.loginPage),
 path('registerPage',views.registerPage),
 #/////////////// for testing page
-path('Login',views.Login),
+path('Registration',views.Registration),
 path('profile',views.profile),
 path('Book/<int:id>',views.bookEvent)
 ]

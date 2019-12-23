@@ -145,5 +145,5 @@ def bookEvent(request,id):
 
 #//////////////////////For testing page
 
-def Login(request):
-    return render(request, "app1/Login.html")
+def Registration(request):
+    return render(request, "app1/Registration.html")
