@@ -16,5 +16,7 @@ path('registerPage',views.registerPage),
 #/////////////// for testing page
 path('Registration',views.Registration),
 path('profile',views.profile),
-path('Book/<int:id>',views.bookEvent)
+path('Book/<int:id>',views.bookEvent),
+path('editProfProcess/<int:id>',views.editProfProcess),
+path('editProfile/<int:id>',views.editProfile),
 ]

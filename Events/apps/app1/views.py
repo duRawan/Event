@@ -1,8 +1,21 @@
 from django.shortcuts import render , redirect ,get_object_or_404
 from .models import *
-from .forms import EventForm, UserForm, UserLoginForm
+from .forms import EventForm, RegistrationForm, UserLoginForm
+from django.template.loader import get_template
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from django.core.mail import send_mail
 
 def index(request):
+    if 'hasEvent' in request.session: 
+        request.session['hasEvent']=False
+    if 'ErrorRegister' in request.session:
+        request.session['ErrorRegister']=""
+    if 'message' in request.session:
+        request.session['message']=""
+    if 'ErrorPassword' in request.session:
+        request.session['ErrorPassword']=""
     if not 'logged'  in request.session:
         request.session['logged']=False
     context={
@@ -69,19 +82,30 @@ def registerPage(request):
         # return redirect("/")
         return redirect("/profile")
     else:
-        User=UserForm(request.POST or None)
-        if User.is_valid():
-            User.save()
-            request.session['logged']=True
-            request.session['UID']=User.id
-            return redirect("/")
+        U=RegistrationForm(request.POST or None)
+        if U.is_valid():
+            try:
+                us=get_object_or_404(User, email=request.POST['email'])
+                request.session['ErrorRegister']=" email already exist"
+                if len(request.POST['password'])<8:
+                    request.session['ErrorPassword']=" password must be 8 character"
+                return redirect("/registerPage")
+            except Exception as e:
+                U.save()
+                email=request.POST['email']
+                user=User.objects.get(email=email)
+                request.session['logged']=True
+                request.session['UID']=user.id
+                return redirect("/")
         
         context={
-                "User":User ,
+                "User":U ,
             }
     return render(request,"app1/registerPage.html",context)
 
 def loginPage(request):
+    if request.session['logged']==True:
+        return redirect("/profile")
     user=UserLoginForm(request.POST or None)
     context={
             "User":user ,
@@ -125,6 +149,7 @@ def logout(request):
         
     else:
         del request.session['UID']
+        del request.session['message']
         request.session['logged']=False
         return redirect("/")
 
@@ -137,13 +162,80 @@ def profile(request):
     print(context)
     return render(request,'app1/profile.html',context)
 
+
+def sendEmail(request,event):
+    u=User.objects.get(id=request.session['UID'])
+    sender_email = "vsecure4@gmail.com"
+    receiver_email =u.email #user email
+    password = 'Rrdsm@123'
+    e=u.events.last()
+    print(e)
+    message = MIMEMultipart("alternative")
+    message["Subject"] = "your Ticket!"
+    message["From"] = sender_email
+    message["To"] = receiver_email
+    result="your ticket"
+
+    d = {'first_name': u.first_name,'last_name':u.last_name,'Event':event}
+    htmly = get_template('app1/mail.html')
+    print (htmly)
+    html_content = htmly.render(d)
+    part2 = MIMEText(html_content, "html")
+    # Add HTML/plain-text parts to MIMEMultipart message
+    # The email client will try to render the last part first
+    #message.attach(part1)
+    message.attach(part2)
+    # Create secure connection with server and send email
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(
+            sender_email, receiver_email, message.as_string()
+        )
+    return True
 def bookEvent(request,id):
-    this_event = Event.objects.get(id=id)
-    user = User.objects.get(id=request.session['UID'])
-    user.events.add(this_event)
-    return redirect(f'/Event/{id}')
+    try:
+        this_event = Event.objects.get(id=id)
+        user = User.objects.get(id=request.session['UID'])
+        e=user.events.values()
+        for i in range(len(e)):
+            for k,v in e[i].items():
+                if k=='name':
+                    x=v
+        if get_object_or_404(Event, name=x):
+            print("the event is exist")
+            request.session['hasEvent']=True
+            return redirect(f'/Event/{id}')
+
+        user.events.add(this_event)
+        sendEmail(request,this_event.name)
+        print("Seeeeennnnnnnddddddddd!!!!!!!!!")
+        request.session['email']=""
+        return redirect(f'/Event/{id}')
+    except Exception as e:
+        request.session['email']="failed"
+        return redirect(f'/Event/{id}')
+    
 
 #//////////////////////For testing page
 
 def Registration(request):
     return render(request, "app1/Registration.html")
+
+def editProfile(request,id):
+    try:
+        u=get_object_or_404(User, email=request.POST['email'])
+        return redirect(f'/profile')
+    except Exception as e:
+        user=User.objects.get(id=id)
+        user.first_name=request.POST["first_name"]
+        user.last_name=request.POST["last_name"]
+        user.email=request.POST["email"]
+        user.save()
+        return redirect(f'/profile')
+
+def editProfProcess(request,id):
+    context={
+        "user":User.objects.get(id=id)
+    }
+    return render(request,"app1/editProfile.html",context)

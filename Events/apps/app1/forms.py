@@ -7,18 +7,24 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ['name', 'description', 'numberOfTickets']
         widget={
+            
             'name': forms.TextInput(attrs={
+                'class':'form-control',
                 'placeholder':"Enter Event name",
             }),
+            
             'description': forms.TextInput(attrs={
+                'class':'form-control',
                 'placeholder':"Enter Event description",
             }),
+            
             'numberOfTickets': forms.TextInput(attrs={
+                'class':'form-control',
                 'placeholder':"Enter number of tickets",
             })
         }
 
-class UserForm(forms.ModelForm):
+class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User

@@ -101,6 +101,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+# # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_COOKIE_SECURE=True
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

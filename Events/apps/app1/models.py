@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from django.core.exceptions import ValidationError
 
 class UserManager(models.Manager):
     def basic_validator(self, postData):
@@ -9,7 +10,7 @@ class UserManager(models.Manager):
         if len(postData["last_name"]) < 1:
             errors["last_name"] = "User last name should be at least 1 characters"
         if len(postData["email"]) < 1:
-            errors["email"] = "User email should be at least 1 characters"
+            raise ValidationError("email already exists")
         if len(postData["password"]) < 8:
             errors["password"] = "User password should be at least 8 characters"
         return errors
