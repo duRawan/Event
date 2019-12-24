@@ -6,7 +6,7 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ['name', 'description', 'numberOfTickets']
-        widget={
+        widgets={
             
             'name': forms.TextInput(attrs={
                 'class':'form-control',
@@ -25,31 +25,35 @@ class EventForm(forms.ModelForm):
         }
 
 class RegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    # password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email','password']
-        widget={
+        widgets={
             'first_name': forms.TextInput(attrs={
                 'placeholder':"Enter your first name",
+                'class':'form-control'
             }),
             'last_name': forms.TextInput(attrs={
                 'placeholder':"Enter your last name",
+                'class':'form-control'
             }),
             'email': forms.TextInput(attrs={
                 'placeholder':"Enter your email",
+                'class':'form-control'
             }),
             'password': forms.TextInput(attrs={
                 'placeholder':"Enter your password",
-                'name':'password'
+                'name':'password',
+                'class':'form-control'
             })
         }
 class UserLoginForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    # password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
         fields = ['email','password']
-        widget={
+        widgets={
             'email': forms.TextInput(attrs={
                 'placeholder':"Enter your email",
                 'class':'form-control',
