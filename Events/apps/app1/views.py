@@ -162,10 +162,11 @@ def logout(request):
             request.session['message']=""
         if 'ErrorPassword' in request.session:
             request.session['ErrorPassword']=""
-        if not 'logged'  in request.session:
+        if 'logged'  in request.session:
             request.session['logged']=False
         if 'email' in request.session:
             request.session['email']=""
+
         return redirect("/")
 
 def profile(request):
