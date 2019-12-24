@@ -18,6 +18,8 @@ def index(request):
         request.session['ErrorPassword']=""
     if not 'logged'  in request.session:
         request.session['logged']=False
+    if 'email' in request.session:
+        request.session['email']=""
     context={
        "allEvents":Event.objects.all(),
        "r":Event.objects.count()
@@ -160,7 +162,18 @@ def logout(request):
     else:
         del request.session['UID']
         del request.session['message']
-        request.session['logged']=False
+        if 'hasEvent' in request.session: 
+            request.session['hasEvent']=False
+        if 'ErrorRegister' in request.session:
+            request.session['ErrorRegister']=""
+        if 'message' in request.session:
+            request.session['message']=""
+        if 'ErrorPassword' in request.session:
+            request.session['ErrorPassword']=""
+        if not 'logged'  in request.session:
+            request.session['logged']=False
+        if 'email' in request.session:
+            request.session['email']=""
         return redirect("/")
 
 def profile(request):
@@ -208,18 +221,20 @@ def bookEvent(request,id):
         this_event = Event.objects.get(id=id)
         user = User.objects.get(id=request.session['UID'])
         e=user.events.values()
+        print(this_event.name)
         for i in range(len(e)):
             for k,v in e[i].items():
                 if k=='name':
                     x=v
-        if get_object_or_404(Event, name=x):
-            print("the event is exist")
-            request.session['hasEvent']=True
-            return redirect(f'/Event/{id}')
+                    if this_event.name==x:
+                        print("the event is exist")
+                        request.session['hasEvent']=True
+                        return redirect(f'/Event/{id}')
 
         user.events.add(this_event)
         sendEmail(request,this_event.name)
         print("Seeeeennnnnnnddddddddd!!!!!!!!!")
+        request.session['hasEvent']=True
         request.session['email']=""
         return redirect(f'/Event/{id}')
     except Exception as e:
