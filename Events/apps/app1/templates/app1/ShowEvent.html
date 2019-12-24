@@ -43,17 +43,20 @@
                                         Description :<p class="testimony-wrap py-4" >{{Event.description}}</p>
                                         Number Of Tickets :<p class="testimony-wrap py-4">{{Event.numberOfTickets}}</p>
                                         <p class="testimony-wrap py-4">{{request.session.email}}</p>
-                   
-                                        {% if request.session.hasEvent %}
+                                        {%if not request.session.log %}
+
+                                        <a class="btn btn-primary py-3 px-5" href="\loginPage"> Book now</a>
+                                        
+                                        {% elif request.session.hasEvent %}
                                         <button class="btn btn-primary py-3 px-5" > Book now</button>
                                         <p>You already booked this event</p>
                                         {% else %}
-                                         
+                                         <p>here
+                                         </p>
                                          
                                         <a class="btn btn-primary py-3 px-5" href="\Book\{{Event.id}}"> Book now </a>
                                        
                                         {% endif %}
-
                                         {% if request.session.logged %}
                                             {% if request.session.UID == 1 %}
                                                     

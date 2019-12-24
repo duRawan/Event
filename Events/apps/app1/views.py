@@ -43,10 +43,18 @@ def AdminDash(request):
     return render(request,"app1/AdminDash.html",context)
 
 def showEvent(request,id):
-    context={
-       "Event":Event.objects.get(id=id),
-       "user":request.session['UID']
-    }
+    
+    if not 'UID' in request.session:
+        request.session['log']=False
+        context={
+        "Event":Event.objects.get(id=id),
+        "log":request.session['log']
+        }
+    else:
+            context={
+        "Event":Event.objects.get(id=id),
+        "user":request.session['UID']
+        }
     print(context)
     return render(request,"app1/ShowEvent.html",context)
 
