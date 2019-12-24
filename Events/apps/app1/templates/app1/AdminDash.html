@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="{% static 'app1/css/open-iconic-bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/animate.css' %}">
-   
+
     <link rel="stylesheet" href="{% static 'app1/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'app1/css/owl.theme.default.min.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/magnific-popup.css'%}">
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{% static 'app1/css/bootstrap-datepicker.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/jquery.timepicker.css'%}">
 
-    
+
     <link rel="stylesheet" href="{% static 'app1/css/flaticon.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/icomoon.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/style.css'%}">
@@ -33,53 +33,57 @@
 <body>
     {% include 'app1/header.html'%}
     <h1>Hi</h1>
+    <br><br>
     <ul>{% for e in allEvents %}
-        <a href="\Event\{{e.id}}">{{e.name}}</a> 
+        <li>
+        <a href="\Event\{{e.id}}">{{e.name}}</a>
+        </li>
         {% endfor %}
     </ul>
 
     <ul>{% for u in allUsers %}
-        <p>{{u.first_name}}</p> 
+        <p>{{u.first_name}}</p>
         {% endfor %}
     </ul>
-    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight"
+        style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
         <section class="ftco-section contact-section">
-                <div class="container">
-    <div class="row block-9 justify-content-center mb-5" style="margin-top:90px ;">
-        <div class="col-md-6 align-items-stretch d-flex">
-    <form action="\admindashboard" method="POST" class="bg-light p-5 contact-form">
-        {% csrf_token %}
-        <div class="form-group">
-        {{form}}
-        </div>
-        
-        <input type="submit" value="submit" class="btn btn-primary py-3 px-5">
-    </form>
-    </div>
-    </div>
+            <div class="container">
+                <div class="row block-9 justify-content-center mb-5" style="margin-top:90px ;">
+                    <div class="col-md-6 align-items-stretch d-flex">
+                        <form action="\admindashboard" method="POST" class="bg-light p-5 contact-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{form}}
+                            </div>
+                            <input type="submit" value="submit" class="btn btn-primary py-3 px-5">
+                        </form>
+                    </div>
                 </div>
-                </section>
+            </div>
+        </section>
     </section>
 
 
     {% include 'app1/footer.html'%}
     <script src="{% static 'app1/js/jquery.min.js'%}"></script>
-  <script src="{% static 'app1/js/jquery-migrate-3.0.1.min.js'%}"></script>
-  <script src="{% static 'app1/js/popper.min.js'%}"></script>
-  <script src="{% static 'app1/js/bootstrap.min.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.easing.1.3.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.waypoints.min.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.stellar.min.js'%}"></script>
-  <script src="{% static 'app1/js/owl.carousel.min.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.magnific-popup.min.js'%}"></script>
-  <script src="{% static 'app1/js/aos.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.animateNumber.min.js'%}"></script>
-  <script src="{% static 'app1/js/bootstrap-datepicker.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.timepicker.min.js'%}"></script>
-  <script src="{% static 'app1/js/scrollax.min.js'%}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{% static 'app1/js/google-map.js'%}"></script>
-  <script src="{% static 'app1/js/main.js'%}"></script>
+    <script src="{% static 'app1/js/jquery-migrate-3.0.1.min.js'%}"></script>
+    <script src="{% static 'app1/js/popper.min.js'%}"></script>
+    <script src="{% static 'app1/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.easing.1.3.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.waypoints.min.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.stellar.min.js'%}"></script>
+    <script src="{% static 'app1/js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{% static 'app1/js/aos.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.animateNumber.min.js'%}"></script>
+    <script src="{% static 'app1/js/bootstrap-datepicker.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.timepicker.min.js'%}"></script>
+    <script src="{% static 'app1/js/scrollax.min.js'%}"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{% static 'app1/js/google-map.js'%}"></script>
+    <script src="{% static 'app1/js/main.js'%}"></script>
 </body>
 
 </html>
