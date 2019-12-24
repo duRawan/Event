@@ -22,8 +22,10 @@ def index(request):
         request.session['email']=""
     context={
        "allEvents":Event.objects.all(),
-       'range':range(1,6)
+       "r":Event.objects.count()
     }
+    print("------------------------" ,context)
+    
     return render(request, "app1/index1.html",context)
 
 def AdminDash(request):
@@ -236,6 +238,12 @@ def bookEvent(request,id):
 
 def Registration(request):
     return render(request, "app1/Registration.html")
+
+def Login(request):
+    return render(request, "app1/Login.html")
+
+def Contact(request):
+    return render(request, "app1/contact.html")
 
 def editProfile(request,id):
     try:

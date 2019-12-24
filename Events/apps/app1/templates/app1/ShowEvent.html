@@ -29,26 +29,52 @@
     <link rel="stylesheet" href="{% static 'app1/css/style.css'%}">
 </head>
 <body>
+    
     {% include 'app1/header.html'%}
-    <h2>Hiii</h2>
-    <p>{{Event.name}}</p>
-    <p>{{Event.description}}</p>
-    <p>{{Event.numberOfTickets}}</p>
-    <p>{{request.session.email}}</p>
-    {% if request.session.hasEvent %}
-    <button > Book now</button>
-    <p>You already booked this event</p>
-    {% else %}
-    <button > <a href="\Book\{{Event.id}}"> Book now</a></button>
-    {% endif %}
+    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+        <section class="ftco-section contact-section">
+             <div class="container">
+                <div class="row block-9 justify-content-center mb-5" style="margin-top:90px; margin-right:20px; ">
+                     <div class="col-md-6 align-items-stretch d-flex" style= "margin-right:20px; ">
+                     <div class="bg-light p-5 contact-form">
+                                        <h2 style="text-align: center;" >Event Details</h2>
+                     
+                                        Event name :<p  class="testimony-wrap py-4">{{Event.name}}</p>
+                                        Description :<p class="testimony-wrap py-4" >{{Event.description}}</p>
+                                        Number Of Tickets :<p class="testimony-wrap py-4">{{Event.numberOfTickets}}</p>
+                                        <p class="testimony-wrap py-4">{{request.session.email}}</p>
+                   
+                                        {% if request.session.hasEvent %}
+                                        <button class="btn btn-primary py-3 px-5" > Book now</button>
+                                        <p>You already booked this event</p>
+                                        {% else %}
+                                         
+                                         
+                                        <a class="btn btn-primary py-3 px-5" href="\Book\{{Event.id}}"> Book now </a>
+                                       
+                                        {% endif %}
 
-    {% if request.session.logged %}
-        {% if request.session.UID == 1 %}
-    <button > <a href="\delete\{{Event.id}}"> delete</a></button>
-    <button > <a href="\editProcess\{{Event.id}}"> Edit</a></button>  
-        {% endif %}
-    {% endif %}
+                                        {% if request.session.logged %}
+                                            {% if request.session.UID == 1 %}
+                                                    
+                                                <a href="\delete\{{Event.id}}" class="btn btn-primary py-3 px-5"  > delete</a> 
+                                                
+                                                 
+                                                <a class="btn btn-primary py-3 px-5" href="\editProcess\{{Event.id}}"> Edit </a> 
+                                               
+                                            {% endif %}
+                                        {% endif %}
+                     
+                     </div>
+                     </div>
+                </div>
+             
+               
+            </div>
+        </section>
+    </section>                            
     {% include 'app1/footer.html'%}
+
     <script src="{% static 'app1/js/jquery.min.js'%}"></script>
   <script src="{% static 'app1/js/jquery-migrate-3.0.1.min.js'%}"></script>
   <script src="{% static 'app1/js/popper.min.js'%}"></script>

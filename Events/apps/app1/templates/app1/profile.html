@@ -31,14 +31,28 @@
 </head>
 <body>
     {% include 'app1/header.html'%}
-    <h1>Hello profile</h1>
-    <p>{{user.first_name}} {{user.last_name}}</p>
-    <p>{{user.email}}</p>
-   <button> <a href="\editProfProcess\{{user.id}}">Edit profile</a> </button>
-    <h1>My Events</h1>
+    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+        <section class="ftco-section contact-section">
+             <div class="container">
+                <div class="row block-9 justify-content-center mb-5" style="margin-top:90px; margin-right:20px; ">
+                     <div class="col-md-6 align-items-stretch d-flex" style= "margin-right:20px; ">
+                     <div class="bg-light p-5 contact-form">
+                                        <h2 style="text-align: center;" >My profile</h2>
+    
+    <p class="testimony-wrap py-4" >{{user.first_name}} {{user.last_name}}</p>
+    <p class="testimony-wrap py-4" >{{user.email}}</p>
+  <a class="btn btn-primary py-3 px-5" href="\editProfProcess\{{user.id}}">Edit profile</a> 
+    <h1  style="text-align: center;" >My Events</h1>
     {% for e in allEvent %}
-    <p>{{e.name}}</p>
+    <p class="testimony-wrap py-4">{{e.name}}</p>
     {% endfor %}
+                     </div>
+                     </div>
+                </div>
+             </div>
+        </section>
+    </section>
+    
 
     {% include 'app1/footer.html'%}
     <script src="{% static 'app1/js/jquery.min.js'%}"></script>

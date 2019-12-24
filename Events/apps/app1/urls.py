@@ -13,8 +13,15 @@ path('register',views.register),
 path('logout',views.logout),
 path('loginPage',views.loginPage),
 path('registerPage',views.registerPage),
+path('profile',views.profile),
+path('Book/<int:id>',views.bookEvent),
 #/////////////// for testing page
 path('Registration',views.Registration),
+path('Login',views.Login),
+path('Contact',views.Contact),
+
+
+
 path('profile',views.profile),
 path('Book/<int:id>',views.bookEvent),
 path('editProfProcess/<int:id>',views.editProfProcess),

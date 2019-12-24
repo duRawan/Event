@@ -52,8 +52,10 @@ class UserLoginForm(forms.ModelForm):
         widget={
             'email': forms.TextInput(attrs={
                 'placeholder':"Enter your email",
+                'class':'form-control',
             }),
             'password': forms.PasswordInput(attrs={
-                'placeholder':"Enter your password"
+                'placeholder':"Enter your password",
+                'class':'form-control',
             })
         }
