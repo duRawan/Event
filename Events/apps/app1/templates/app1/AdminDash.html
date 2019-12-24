@@ -32,23 +32,48 @@
 
 <body>
     {% include 'app1/header.html'%}
-    <h1>Hi</h1>
-    <br><br>
-    <ul>{% for e in allEvents %}
-        <li>
-        <a href="\Event\{{e.id}}">{{e.name}}</a>
-        </li>
-        {% endfor %}
-    </ul>
 
-    <ul>{% for u in allUsers %}
-        <p>{{u.first_name}}</p>
-        {% endfor %}
-    </ul>
-    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight"
-        style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-        <section class="ftco-section contact-section">
-            <div class="container">
+    <div class="container">
+                <div class="row block-9 justify-content-center mb-5" style="margin-top:90px ;">
+                    <div class="col-md-6 align-items-stretch d-flex">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Users</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for u in allUsers %}
+                                <tr>
+                                    <td>{{u.first_name}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <br>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Events</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for e in allEvents %}
+                                <tr>
+                                    <td><a href="\Event\{{e.id}}">{{e.name}}</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+          
+
+        <!-- -------------------------Event Form------------------------ -->
+        <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight"
+            style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+            <section class="ftco-section contact-section">
+
                 <div class="row block-9 justify-content-center mb-5" style="margin-top:90px ;">
                     <div class="col-md-6 align-items-stretch d-flex">
                         <form action="\admindashboard" method="POST" class="bg-light p-5 contact-form">
@@ -60,10 +85,9 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </section>
         </section>
-    </section>
-
+    </div>
 
     {% include 'app1/footer.html'%}
     <script src="{% static 'app1/js/jquery.min.js'%}"></script>

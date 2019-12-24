@@ -21,6 +21,7 @@ class EventForm(forms.ModelForm):
             'numberOfTickets': forms.TextInput(attrs={
                 'class':'form-control',
                 'placeholder':"Enter number of tickets",
+                'type':'number'
             })
         }
 

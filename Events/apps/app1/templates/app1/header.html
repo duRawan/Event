@@ -14,9 +14,16 @@
 	          <li class="nav-item"><a href="\loginPage" class="nav-link">Log in</a></li>
 			  <li class="nav-item"><a href="\registerPage" class="nav-link">Registration</a></li>
 			  {% else %}
-			  <li class="nav-item"><a href="\logout" class="nav-link">Log out</a></li>
+              <li class="nav-item"><a href="\logout" class="nav-link">Log out</a></li>
+              {% endif %}
+              {% if request.session.logged %}
+                {% if request.session.UID == 1 %}
+              <li class="nav-item"><a href="\admindashboard" class="nav-link">Dashboard</a></li>
+                {% else %}
 			  <li class="nav-item"><a href="\profile" class="nav-link">profile</a></li>
-			  {% endif %}
+                {% endif %}
+              {% endif %}
+              
 			  <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>

@@ -45,15 +45,12 @@ def AdminDash(request):
     return render(request,"app1/AdminDash.html",context)
 
 def showEvent(request,id):
-    
     if not 'UID' in request.session:
-        request.session['log']=False
         context={
         "Event":Event.objects.get(id=id),
-        "log":request.session['log']
         }
     else:
-            context={
+        context={
         "Event":Event.objects.get(id=id),
         "user":request.session['UID']
         }
@@ -74,7 +71,7 @@ def editEvent(request,id):
     if request.session['UID']==1:
         event=Event.objects.get(id=id)
         event.name=request.POST["name"]
-        event.description=request.POST["desc"]
+        event.description=request.POST.get("description")
         event.numberOfTickets=request.POST["number"]
         event.save()
         return redirect(f'/Event/{event.id}')
