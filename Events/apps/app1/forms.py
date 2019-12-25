@@ -5,7 +5,7 @@ from .models import *
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['name', 'description', 'numberOfTickets']
+        fields = ['name', 'description', 'numberOfTickets','location']
         widgets={
             
             'name': forms.TextInput(attrs={
@@ -22,7 +22,11 @@ class EventForm(forms.ModelForm):
                 'class':'form-control',
                 'placeholder':"Enter number of tickets",
                 'type':'number'
-            })
+            }),
+            'location': forms.TextInput(attrs={
+                'class':'form-control',
+                'placeholder':"Enter Event location",
+            }),
         }
 
 class RegistrationForm(forms.ModelForm):
@@ -43,7 +47,7 @@ class RegistrationForm(forms.ModelForm):
                 'placeholder':"Enter your email",
                 'class':'form-control'
             }),
-            'password': forms.TextInput(attrs={
+            'password': forms.PasswordInput(attrs={
                 'placeholder':"Enter your password",
                 'name':'password',
                 'class':'form-control'

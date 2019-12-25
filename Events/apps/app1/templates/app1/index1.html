@@ -1,145 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    {%load static%}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'app1/css/open-iconic-bootstrap.min.css'%}">
-    <link rel="stylesheet" href="{% static 'app1/css/animate.css' %}">
-   
-    <link rel="stylesheet" href="{% static 'app1/css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'app1/css/owl.theme.default.min.css'%}">
-    <link rel="stylesheet" href="{% static 'app1/css/magnific-popup.css'%}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	{%load static%}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'app1/css/aos.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/open-iconic-bootstrap.min.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/animate.css' %}">
 
-    <link rel="stylesheet" href="{% static 'app1/css/ionicons.min.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'app1/css/owl.theme.default.min.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/magnific-popup.css'%}">
 
-    <link rel="stylesheet" href="{% static 'app1/css/bootstrap-datepicker.css'%}">
-    <link rel="stylesheet" href="{% static 'app1/css/jquery.timepicker.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/aos.css'%}">
 
-    
-    <link rel="stylesheet" href="{% static 'app1/css/flaticon.css'%}">
-    <link rel="stylesheet" href="{% static 'app1/css/icomoon.css'%}">
-    <link rel="stylesheet" href="{% static 'app1/css/style.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/ionicons.min.css'%}">
+
+	<link rel="stylesheet" href="{% static 'app1/css/bootstrap-datepicker.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/jquery.timepicker.css'%}">
+
+
+	<link rel="stylesheet" href="{% static 'app1/css/flaticon.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/icomoon.css'%}">
+	<link rel="stylesheet" href="{% static 'app1/css/style.css'%}">
 </head>
-<body>
-    <!-- ---------------- -------------------- -->
-    {% include 'app1/header.html'%}
-    
-    <!-- END nav -->
-    
-    <div class="hero-wrap" style="background-image: url('https://admin.ticketmx.com/uploads/images/7c9124871f43fca229b7ad82f0584d7c0a016bf7.jpg?w=1920&h=700&mode=crop&bgcolor=black&format=jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="overlay-2"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text justify-content-center align-items-center">
-          <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-end">
-          	<div class="text text-center w-100">
-	            <h1 class="mb-4">Find Events <br>imagine</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mouse">
-				<a href="#" class="mouse-icon">
-					<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
-				</a>
-			</div>
-    </div>
-	 <section class="ftco-section goto-here">
 
-    	<div class="container">
-    		<div class="row justify-content-center">
-          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-          	<span class="subheading">Riyadh Session</span>
-            <h2 class="mb-2">UPCOMING EVENTS</h2>
-          </div>
+<body>
+	<!-- ---------------- -------------------- -->
+	{% include 'app1/header.html'%}
+
+	<!-- END nav -->
+
+	<div class="hero-wrap"
+		style="background-image: url('https://admin.ticketmx.com/uploads/images/7c9124871f43fca229b7ad82f0584d7c0a016bf7.jpg?w=1920&h=700&mode=crop&bgcolor=black&format=jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="overlay-2"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text justify-content-center align-items-center">
+				<div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-end">
+					<div class="text text-center w-100">
+						<h1 class="mb-4">Find Events <br>imagine</h1>
+					</div>
+				</div>
+			</div>
 		</div>
-		
-        <div class="row">
-			
-			
-			{% for e in allEvents %}
-			
-        	<div class="col-md-4">
-					
+		<div class="mouse">
+			<a href="#" class="mouse-icon">
+				<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
+			</a>
+		</div>
+	</div>
+	<section class="ftco-section goto-here">
+
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 heading-section text-center ftco-animate mb-5">
+					<span class="subheading">Riyadh Session</span>
+					<h2 class="mb-2">UPCOMING EVENTS</h2>
+				</div>
+			</div>
+
+			<div class="row">
+
+
+				{% for e in allEvents %}
+
+				<div class="col-md-4">
+
 					<div class="property-wrap ftco-animate">
-						<div class="img d-flex align-items-center justify-content-center" style="background-image: url(https://admin.ticketmx.com/uploads/images/8fe2354db1c608bb132a11da1bfd3d505ee1c2d2.jpg?w=750&h=750&mode=crop&bgcolor=black&format=jpg);">
-						
-						<a href="properties-single.html" class="icon d-flex align-items-center justify-content-center btn-custom">
-							<span class="ion-ios-link"></span>
-						</a>
-					
-        				<div class="list-agent d-flex align-items-center">
-								
-        					<a href="#" class="agent-info d-flex align-items-center">
-        						<div class="img-2 rounded-circle" style="background-image: url(static/app1/images/person_1.jpg);"></div>
-								
-								<h3 class="mb-0 ml-2">{{e.name}} </h3>
-								
+						<div class="img d-flex align-items-center justify-content-center"
+							style="background-image: url(https://admin.ticketmx.com/uploads/images/8fe2354db1c608bb132a11da1bfd3d505ee1c2d2.jpg?w=750&h=750&mode=crop&bgcolor=black&format=jpg);">
+
+							<a href="\Event\{{e.id}}"
+								class="icon d-flex align-items-center justify-content-center btn-custom">
+								<span class="ion-ios-link"></span>
 							</a>
-							
-        					<div class="tooltip-wrap d-flex">
-        						<a href="#" class="icon-2 d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="top" title="Bookmark">
-        							<span class="ion-ios-heart"><i class="sr-only">Bookmark</i></span>
-        						</a>
-        						<a href="#" class="icon-2 d-flex align-items-center justify-content-center" data-toggle="tooltip" data-placement="top" title="Compare">
-        							<span class="ion-ios-eye"><i class="sr-only">Compare</i></span>
-        						</a>
-        					</div>
+
+							<div class="list-agent d-flex align-items-center">
+								<a href="#" class="agent-info d-flex align-items-center">
+								</a>
+							</div>
+
 						</div>
-						
-        			</div>
-        			<div class="text">
-        				<!-- <p class="price mb-3"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p> -->
-						<h3 class="mb-0"><a href="\Event\{{e.id}}">{{e.name}}</a> </h3>
-						
-        				<span class="location d-inline-block mb-3"><i class="ion-ios-pin mr-2"></i>King Fahad Road, Riyadh, KSA</span>
-        				<ul class="property_list">
+						<div class="text">
+							<!-- <p class="price mb-3"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p> -->
+							<h3 class="mb-0"><a href="\Event\{{e.id}}">{{e.name}}</a> </h3>
+
+							<span class="location d-inline-block mb-3"><i
+									class="ion-ios-pin mr-2"></i>{{e.location}}</span>
+							<!-- <ul class="property_list">
         					<li><span class="flaticon-bed"></span>3</li>
         					<li><span class="flaticon-bathtub"></span>2</li>
         					<li><span class="flaticon-floor-plan"></span>1,878 sqft</li>
-        				</ul>
+        				</ul> -->
+						</div>
+
 					</div>
-				
+
+
 				</div>
-				
-			
-        	</div>
-			{%endfor%}
-		</div>  
-		
-    	</div>
-    </section>
+				{%endfor%}
+			</div>
 
-    
+		</div>
+	</section>
 
-    <!-- ----------------footer-------------------- -->
-{% include 'app1/footer.html'%}
-<script src="{% static 'app1/js/jquery.min.js'%}"></script>
-<script src="{% static 'app1/js/jquery-migrate-3.0.1.min.js'%}"></script>
-<script src="{% static 'app1/js/popper.min.js'%}"></script>
-<script src="{% static 'app1/js/bootstrap.min.js'%}"></script>
-<script src="{% static 'app1/js/jquery.easing.1.3.js'%}"></script>
-<script src="{% static 'app1/js/jquery.waypoints.min.js'%}"></script>
-<script src="{% static 'app1/js/jquery.stellar.min.js'%}"></script>
-<script src="{% static 'app1/js/owl.carousel.min.js'%}"></script>
-<script src="{% static 'app1/js/jquery.magnific-popup.min.js'%}"></script>
-<script src="{% static 'app1/js/aos.js'%}"></script>
-<script src="{% static 'app1/js/jquery.animateNumber.min.js'%}"></script>
-<script src="{% static 'app1/js/bootstrap-datepicker.js'%}"></script>
-<script src="{% static 'app1/js/jquery.timepicker.min.js'%}"></script>
-<script src="{% static 'app1/js/scrollax.min.js'%}"></script>
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="{% static 'app1/js/google-map.js'%}"></script>
-<script src="{% static 'app1/js/main.js'%}"></script> 
+
+
+	<!-- ----------------footer-------------------- -->
+	{% include 'app1/footer.html'%}
+	<script src="{% static 'app1/js/jquery.min.js'%}"></script>
+	<script src="{% static 'app1/js/jquery-migrate-3.0.1.min.js'%}"></script>
+	<script src="{% static 'app1/js/popper.min.js'%}"></script>
+	<script src="{% static 'app1/js/bootstrap.min.js'%}"></script>
+	<script src="{% static 'app1/js/jquery.easing.1.3.js'%}"></script>
+	<script src="{% static 'app1/js/jquery.waypoints.min.js'%}"></script>
+	<script src="{% static 'app1/js/jquery.stellar.min.js'%}"></script>
+	<script src="{% static 'app1/js/owl.carousel.min.js'%}"></script>
+	<script src="{% static 'app1/js/jquery.magnific-popup.min.js'%}"></script>
+	<script src="{% static 'app1/js/aos.js'%}"></script>
+	<script src="{% static 'app1/js/jquery.animateNumber.min.js'%}"></script>
+	<script src="{% static 'app1/js/bootstrap-datepicker.js'%}"></script>
+	<script src="{% static 'app1/js/jquery.timepicker.min.js'%}"></script>
+	<script src="{% static 'app1/js/scrollax.min.js'%}"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="{% static 'app1/js/google-map.js'%}"></script>
+	<script src="{% static 'app1/js/main.js'%}"></script>
 </body>
+
 </html>

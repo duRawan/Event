@@ -73,6 +73,7 @@ def editEvent(request,id):
         event.name=request.POST["name"]
         event.description=request.POST.get("description")
         event.numberOfTickets=request.POST["number"]
+        event.location=request.POST["location"]
         event.save()
         return redirect(f'/Event/{event.id}')
     else:
@@ -158,7 +159,8 @@ def logout(request):
         
     else:
         del request.session['UID']
-        del request.session['message']
+        if 'message' in request.session: 
+            request.session['message']=""
         if 'hasEvent' in request.session: 
             request.session['hasEvent']=False
         if 'ErrorRegister' in request.session:
@@ -252,16 +254,12 @@ def Contact(request):
     return render(request, "app1/contact.html")
 
 def editProfile(request,id):
-    try:
-        u=get_object_or_404(User, email=request.POST['email'])
-        return redirect(f'/profile')
-    except Exception as e:
-        user=User.objects.get(id=id)
-        user.first_name=request.POST["first_name"]
-        user.last_name=request.POST["last_name"]
-        user.email=request.POST["email"]
-        user.save()
-        return redirect(f'/profile')
+    user=User.objects.get(id=id)
+    user.first_name=request.POST["first_name"]
+    user.last_name=request.POST["last_name"]
+    user.email=request.POST["email"]
+    user.save()
+    return redirect(f'/profile')
 
 def editProfProcess(request,id):
     context={

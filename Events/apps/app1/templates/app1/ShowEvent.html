@@ -42,7 +42,8 @@
                                         Event name :<p  class="testimony-wrap py-4">{{Event.name}}</p>
                                         Description :<p class="testimony-wrap py-4" >{{Event.description}}</p>
                                         Number Of Tickets :<p class="testimony-wrap py-4">{{Event.numberOfTickets}}</p>
-                                        <p class="testimony-wrap py-4">{{request.session.email}}</p>
+                                        Event location :<p  class="testimony-wrap py-4">{{Event.location}}</p>
+                                        <p>{{request.session.email}}</p>
                                         
                                         {% if not request.session.logged %}
                                         <p>visitor</p>
@@ -51,8 +52,7 @@
                                         <button class="btn btn-primary py-3 px-5" > Book now</button>
                                         <p>You already booked this event</p>
                                         {% else %}
-                                         <p>here
-                                         </p>
+                                         
                                          
                                         <a class="btn btn-primary py-3 px-5" href="\Book\{{Event.id}}"> Book now </a>
                                        
