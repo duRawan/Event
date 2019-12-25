@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -12,7 +13,7 @@
 
     <link rel="stylesheet" href="{% static 'app1/css/open-iconic-bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/animate.css' %}">
-   
+
     <link rel="stylesheet" href="{% static 'app1/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'app1/css/owl.theme.default.min.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/magnific-popup.css'%}">
@@ -24,35 +25,43 @@
     <link rel="stylesheet" href="{% static 'app1/css/bootstrap-datepicker.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/jquery.timepicker.css'%}">
 
-    
+
     <link rel="stylesheet" href="{% static 'app1/css/flaticon.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/icomoon.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/style.css'%}">
 </head>
-<body>
+
+<body id="page-top">
     {% include 'app1/header.html'%}
-    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight"
+        style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
         <section class="ftco-section contact-section">
-             <div class="container">
+            <div class="container">
                 <div class="row block-9 justify-content-center mb-5" style="margin-top:90px; margin-right:20px; ">
-                     <div class="col-md-6 align-items-stretch d-flex" style= "margin-right:20px; ">
-                     <div class="bg-light p-5 contact-form">
-                                        <h2 style="text-align: center;" >My profile</h2>
-    
-    <p class="testimony-wrap py-4" >{{user.first_name}} {{user.last_name}}</p>
-    <p class="testimony-wrap py-4" >{{user.email}}</p>
-  <a class="btn btn-primary py-3 px-5" href="\editProfProcess\{{user.id}}">Edit profile</a> 
-    <h1  style="text-align: center;" >My Events</h1>
-    {% for e in allEvent %}
-    <p class="testimony-wrap py-4">{{e.name}}</p>
-    {% endfor %}
-                     </div>
-                     </div>
+                    <div class="col-md-6 align-items-stretch d-flex" style="margin-right:20px; ">
+                        <div class="bg-light p-5 card shadow contact-form">
+                            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                            <span class="subheading" >My profile</span>
+                            
+
+                            <p class="testimony-wrap py-4">{{user.first_name}} {{user.last_name}}</p>
+                            <p class="testimony-wrap py-4">{{user.email}}</p>
+                            <div >
+                            <a class="btn btn-primary py-2 px-5"  href="\editProfProcess\{{user.id}}">Edit profile</a>
+                            </div>
+                            <br><br>
+                            <h1 class="subheading" style="text-align: center;">My Events</h1>
+                            {% for e in allEvent %}
+                            <p class="testimony-wrap py-4">{{e.name}}</p>
+                            {% endfor %}
+                        </div>
+                        </div>
+                    </div>
                 </div>
-             </div>
+            </div>
         </section>
     </section>
-    
+
 
     {% include 'app1/footer.html'%}
     <script src="{% static 'app1/js/jquery.min.js'%}"></script>
@@ -72,6 +81,7 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="{% static 'app1/js/google-map.js'%}"></script>
-    <script src="{% static 'app1/js/main.js'%}"></script> 
+    <script src="{% static 'app1/js/main.js'%}"></script>
 </body>
+
 </html>

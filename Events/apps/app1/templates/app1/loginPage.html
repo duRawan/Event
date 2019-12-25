@@ -36,9 +36,9 @@
                 <div class="container">
                   
                   <div class="row block-9 justify-content-center mb-5" style="margin-top:180px ;">
-                    <div class="col-md-6 align-items-stretch d-flex" >
+                    <div class="col-md-8 align-items-stretch d-flex" >
                             <p>{{request.session.message}}</p>
-                      <form action="\login" class="bg-light p-5 contact-form" method="POST" >
+                      <form action="\login" class="bg-light p-5 card shadow contact-form" method="POST" >
                             {% csrf_token %}
                             <div class="form-group">
                                     {{User.as_p}}
@@ -54,7 +54,7 @@
                               
                          --> 
                         <div class="form-group">
-                          <input type="submit" value="Log in" class="btn btn-primary py-3 px-5" style="margin-left:490px;">
+                          <input type="submit" value="Log in" class="btn btn-primary py-3 px-5" style="margin-left:570px;">
                         </div>
                       </form>
                     </div>

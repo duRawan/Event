@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,92 +9,96 @@
     {%load static%}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="{% static 'app1/css/open-iconic-bootstrap.min.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/animate.css' %}">
-   
     <link rel="stylesheet" href="{% static 'app1/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'app1/css/owl.theme.default.min.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/magnific-popup.css'%}">
-
     <link rel="stylesheet" href="{% static 'app1/css/aos.css'%}">
-
     <link rel="stylesheet" href="{% static 'app1/css/ionicons.min.css'%}">
-
     <link rel="stylesheet" href="{% static 'app1/css/bootstrap-datepicker.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/jquery.timepicker.css'%}">
-
-    
     <link rel="stylesheet" href="{% static 'app1/css/flaticon.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/icomoon.css'%}">
     <link rel="stylesheet" href="{% static 'app1/css/style.css'%}">
 </head>
+
 <body>
-    
     {% include 'app1/header.html'%}
-    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-        <section class="ftco-section contact-section">
-             <div class="container">
-                <div class="row block-9 justify-content-center mb-5" style="margin-top:90px; margin-right:20px; ">
-                     <div class="col-md-6 align-items-stretch d-flex" style= "margin-right:20px; ">
-                     <div class="bg-light p-5 contact-form">
-                                        <h2 style="text-align: center;" >Event Details</h2>
-                     
-                                        Event name :<p  class="testimony-wrap py-4">{{Event.name}}</p>
-                                        Description :<p class="testimony-wrap py-4" >{{Event.description}}</p>
-                                        Number Of Tickets :<p class="testimony-wrap py-4">{{Event.numberOfTickets}}</p>
-                                        Event location :<p  class="testimony-wrap py-4">{{Event.location}}</p>
-                                        <p>{{request.session.email}}</p>
-                                        
-                                        {% if not request.session.logged %}
-                                        <p>visitor</p>
-                                        <a class="btn btn-primary py-3 px-5" href="\loginPage"> Book now</a>
-                                        {% elif request.session.hasEvent %}
-                                        <button class="btn btn-primary py-3 px-5" > Book now</button>
-                                        <p>You already booked this event</p>
-                                        {% else %}
-                                         
-                                         
-                                        <a class="btn btn-primary py-3 px-5" href="\Book\{{Event.id}}"> Book now </a>
-                                       
-                                        {% endif %}
-                                        {% if request.session.logged %}
-                                            {% if request.session.UID == 1 %}
-                                                    
-                                                <a href="\delete\{{Event.id}}" class="btn btn-primary py-3 px-5"  > delete</a> 
-                                                
-                                                 
-                                                <a class="btn btn-primary py-3 px-5" href="\editProcess\{{Event.id}}"> Edit </a> 
-                                               
-                                            {% endif %}
-                                        {% endif %}
-                     
-                     </div>
-                     </div>
+    
+    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight"
+        style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+        <section class="ftco-section contact-section ">
+            <div class="container">
+                <div class="row block-9  justify-content-center mb-5" style="margin-top:80px; margin-right:20px;">
+                    <div class="col-md-8 align-items-stretch d-flex " style="margin-right:20px;">
+                        <div class="bg-light p-5 card shadow contact-form" style="width: 800px; ">
+                            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                                <span class="subheading">Event Details</span>
+                                <br><br>
+                                <div>
+                                    <p style="text-align: left;">Event name:</p>
+                                    <p class="testimony-wrap py-4">{{Event.name}}</p>
+                                    <p style="text-align: left;">Description:</p>
+                                    <p class="testimony-wrap py-4">{{Event.description}}</p>
+
+                                    <p style="text-align: left;">Event location:</p>
+                                    <p class="testimony-wrap py-4">{{Event.location}}</p>
+                                    <p>{{request.session.email}}</p>
+                                    {% if request.session.UID != 1 %}
+                                    {% if not request.session.logged %}
+                                    <p>visitor</p>
+                                    <div>
+                                        <a class="btn btn-primary py-3 px-5" href="\loginPage" style="margin-left:500px;"> Buy now</a>
+                                    </div>
+                                    {% elif request.session.hasEvent %}
+                                    <div>
+                                        <button class="btn btn-primary py-3 px-5" style="margin-left:500px;"> Buy now</button>
+                                    </div>
+                                    <p>You already bought this event</p>
+                                    {% else %}
+                                    <div>
+                                        <a class="btn btn-primary py-3 px-5" style="margin-left:500px;" href="\Book\{{Event.id}}"> Buy now </a>
+                                    </div>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% if request.session.logged %}
+                                    {% if request.session.UID == 1 %}
+                                    <div>
+                                        <a href="\delete\{{Event.id}}" class="btn btn-primary py-3 px-5">
+                                            DELETE</a>
+                                        <a class="btn btn-primary py-3 px-5" href="\editProcess\{{Event.id}}">
+                                            EDIT </a>
+                                    </div>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-             
-               
             </div>
         </section>
-    </section>                            
+    </section>
     {% include 'app1/footer.html'%}
-
     <script src="{% static 'app1/js/jquery.min.js'%}"></script>
-  <script src="{% static 'app1/js/jquery-migrate-3.0.1.min.js'%}"></script>
-  <script src="{% static 'app1/js/popper.min.js'%}"></script>
-  <script src="{% static 'app1/js/bootstrap.min.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.easing.1.3.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.waypoints.min.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.stellar.min.js'%}"></script>
-  <script src="{% static 'app1/js/owl.carousel.min.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.magnific-popup.min.js'%}"></script>
-  <script src="{% static 'app1/js/aos.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.animateNumber.min.js'%}"></script>
-  <script src="{% static 'app1/js/bootstrap-datepicker.js'%}"></script>
-  <script src="{% static 'app1/js/jquery.timepicker.min.js'%}"></script>
-  <script src="{% static 'app1/js/scrollax.min.js'%}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{% static 'app1/js/google-map.js'%}"></script>
-  <script src="{% static 'app1/js/main.js'%}"></script>
+    <script src="{% static 'app1/js/jquery-migrate-3.0.1.min.js'%}"></script>
+    <script src="{% static 'app1/js/popper.min.js'%}"></script>
+    <script src="{% static 'app1/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.easing.1.3.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.waypoints.min.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.stellar.min.js'%}"></script>
+    <script src="{% static 'app1/js/owl.carousel.min.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.magnific-popup.min.js'%}"></script>
+    <script src="{% static 'app1/js/aos.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.animateNumber.min.js'%}"></script>
+    <script src="{% static 'app1/js/bootstrap-datepicker.js'%}"></script>
+    <script src="{% static 'app1/js/jquery.timepicker.min.js'%}"></script>
+    <script src="{% static 'app1/js/scrollax.min.js'%}"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{% static 'app1/js/google-map.js'%}"></script>
+    <script src="{% static 'app1/js/main.js'%}"></script>
 </body>
+
 </html>
