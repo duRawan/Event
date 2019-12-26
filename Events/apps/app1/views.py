@@ -246,7 +246,7 @@ def login(request):
             try:
                 user = get_object_or_404(User, email=request.POST["email"])
             except Exception as e:
-                request.session["message"] = "wrong email or password, please try again"
+                request.session["message"] = "Wrong Email Or Password, Please try again"
                 return redirect("/loginPage")
             if password == user.password:
                 request.session["logged"] = True
@@ -254,7 +254,7 @@ def login(request):
                 request.session["message"] = ""
                 return redirect("/")
             else:
-                request.session["message"] = "wrong email or password, please try again"
+                request.session["message"] = "Wrong Email Or Password, Please try again"
                 return redirect("/loginPage")
         return render(request, "app1/loginPage.html")
 
