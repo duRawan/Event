@@ -5,7 +5,7 @@ from .models import *
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['name', 'description', 'numberOfTickets','location']
+        fields = ['name', 'description', 'numberOfTickets','location','photo']
         widgets={
             
             'name': forms.TextInput(attrs={
@@ -27,6 +27,9 @@ class EventForm(forms.ModelForm):
                 'class':'form-control',
                 'placeholder':"Enter Event location",
             }),
+            'photo':forms.FileInput(attrs={
+                'class':'browse btn input-group-append'
+            })
         }
 
 class RegistrationForm(forms.ModelForm):

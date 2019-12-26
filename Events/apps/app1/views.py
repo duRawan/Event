@@ -89,7 +89,7 @@ def AdminDash(request):
 
 
 def addEvent(request):
-    form = EventForm(request.POST or None)
+    form = EventForm(request.POST,request.FILES)
     if form.is_valid():
         form.save()
     return redirect('/admindashboard')
@@ -136,6 +136,7 @@ def deleteEvent(request, id):
 
 
 def registerPage(request):
+
     if request.session["logged"] == True:
         # return redirect("/")
         return redirect("/profile")
@@ -143,10 +144,10 @@ def registerPage(request):
         U = RegistrationForm(request.POST or None)
         if U.is_valid():
             try:
-                us = get_object_or_404(User, email=request.POST["email"])
-                request.session["ErrorRegister"] = " email already exist"
                 if len(request.POST["password"]) < 8:
-                    request.session["ErrorPassword"] = "password must be 8 character"
+                    request.session["ErrorPassword"] = "Password must be 8 character"
+                if get_object_or_404(User, email=request.POST["email"]):
+                    request.session["ErrorRegister"] = " Email already exist"
                 return redirect("/registerPage")
             except Exception as e:
                 U.save()
@@ -172,66 +173,6 @@ def loginPage(request):
     return render(request, "app1/loginPage.html", context)
 
 
-def test(request):
-    if "logged" in request.session:
-        if request.session["UID"] == 1:
-            form = EventForm(request.POST or None)
-            dataSource = OrderedDict()
-            # The `chartConfig` dict contains key-value pairs data for chart attribute
-            chartConfig = OrderedDict()
-            chartConfig["caption"] = ""
-            chartConfig["subCaption"] = ""
-            chartConfig["xAxisName"] = ""
-            chartConfig["yAxisName"] = "No. of events and users"
-            chartConfig["numberSuffix"] = ""
-            chartConfig["theme"] = "fusion"
-            Ec = 0
-            Uc = 0
-            # The `chartData` dict contains key-value pairs data
-            chartData = OrderedDict()
-            # F= Files.objects.all()
-            E = Event.objects.all().values()
-            U = User.objects.values()
-            for e in E:
-                Ec = Ec + 1
-            for u in U:
-                Uc = Uc + 1
-            print(Ec, Uc)
-            chartData["Event"] = Ec
-            chartData["User"] = Uc
-            dataSource["chart"] = chartConfig
-            dataSource["data"] = []
-            # Convert the data in the `chartData` array into a format that can be consumed by FusionCharts.
-            # The data for the chart should be in an array wherein each element of the array is a JSON object
-            # having the `label` and `value` as keys.
-            # Iterate through the data in `chartData` and insert in to the `dataSource['data']` list.
-            for key, value in chartData.items():
-                data = {}
-                print(key)
-                print(value)
-                data["label"] = key
-                data["value"] = value
-                dataSource["data"].append(data)
-
-            if form.is_valid():
-                form.save()
-
-            # Create an object for the column 2D chart using the FusionCharts class constructor
-            # The chart data is passed to the `dataSource` parameter.
-            column2D = FusionCharts(
-                "column2d", "ex1", "600", "400", "chart-1", "json", dataSource
-            )
-            context = {
-                "form": form,
-                "allEvents": Event.objects.all(),
-                "allUsers": User.objects.all(),
-                "output": column2D.render(),
-                "chartTitle": "Activity",
-            }
-            return render(request, "app1/tst.html", context)
-        else:
-            return redirect("/")
-    return render(request, "app1/tst.html", context)
 
 
 # Log in is Need To be refactored Email must be unique!! #decorator for ensuring that a user is loged in  !!

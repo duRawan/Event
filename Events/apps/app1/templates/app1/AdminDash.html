@@ -150,7 +150,7 @@
         <div class="col-xl-6 col-lg-7" style="margin-left: 130px;">
 
             <!-- Project Card Example -->
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4"  style="height: 580px;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Chart</h6>
                 </div>
@@ -163,20 +163,20 @@
         </div>
         <div class="col-xl-4 col-lg-7" >
             <!-- Project Card Example -->
-            <div class="card shadow mb-4" style="height: 545px;">
+            <div class="card shadow mb-4" style="height: 580px;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">New Event</h6>
                 </div>
                 <div class="card-body">
                     <div>
                         <div>
-                            <form action="\addEvent" method="POST" >
+                            <form action="\addEvent" method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     {{form}}
                                 </div>
-                                <br>
-                                <input type="submit" value="submit" class="btn btn-primary py-3 px-5" style="margin-left:440px; ">
+                                
+                                <input type="submit" value="submit" class="btn btn-primary py-2 px-5" style="margin-left:280px;  ">
                             </form>
                         </div>
                     </div>

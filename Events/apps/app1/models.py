@@ -20,6 +20,7 @@ class Event(models.Model):
     description = models.TextField()
     numberOfTickets = models.IntegerField()
     location = models.CharField(max_length=255)
+    photo = models.ImageField(upload_to='image/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

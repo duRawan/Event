@@ -35,11 +35,12 @@
     <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
         <section class="ftco-section contact-section">
                 <div class="container">
-                  
+                  <p style="margin-top: 100px; margin-left: 214px; color: red;">{{request.session.ErrorRegister}}</p>
+                    <p style="margin-bottom: -90px; margin-left: 214px; color: red;">{{request.session.ErrorPassword}}</p>
                   <div class="row block-9 justify-content-center mb-5" style="margin-top:90px ;">
+                    
                     <div class="col-md-8 align-items-stretch d-flex" >
-                            <p>{{request.session.ErrorRegister}}</p>
-                            <p>{{request.session.ErrorPassword}}</p>
+                            
                       <form action="\registerPage" method="POST" class="bg-light p-5 card shadow contact-form" >
                             {% csrf_token %}
                         <div class="form-group">
