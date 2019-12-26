@@ -69,10 +69,7 @@ def AdminDash(request):
                 data["label"] = key
                 data["value"] = value
                 dataSource["data"].append(data)
-
-            if form.is_valid():
-                form.save()
-
+                
             # Create an object for the column 2D chart using the FusionCharts class constructor
             # The chart data is passed to the `dataSource` parameter.
             column2D = FusionCharts(
@@ -90,6 +87,12 @@ def AdminDash(request):
             return redirect("/")
     return render(request, "app1/AdminDash.html", context)
 
+
+def addEvent(request):
+    form = EventForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    return redirect('/admindashboard')
 
 def showEvent(request, id):
     if not "UID" in request.session:
